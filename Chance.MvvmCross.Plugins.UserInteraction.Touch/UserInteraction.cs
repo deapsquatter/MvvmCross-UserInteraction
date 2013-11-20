@@ -1,6 +1,7 @@
 using System;
 using MonoTouch.UIKit;
 using System.Threading.Tasks;
+using Cirrious.CrossCore;
 
 namespace Chance.MvvmCross.Plugins.UserInteraction.Touch
 {
@@ -94,6 +95,49 @@ namespace Chance.MvvmCross.Plugins.UserInteraction.Touch
 			var tcs = new TaskCompletionSource<InputResponse>();
 			Input(message, (ok, text) => tcs.SetResult(new InputResponse() {Ok = ok, Text = text}),	placeholder, title, okButton, cancelButton);
 			return tcs.Task;
+		}
+
+		public void Toast(string message)
+		{
+			var toast = Mvx.Resolve<IToastMessage>();
+			if (toast != null)
+				toast.Toast (message);
+		}
+
+		public void ToastOK (string message)
+		{
+			var toast = Mvx.Resolve<IToastMessage>();
+			if (toast != null)
+				toast.ToastOK (message);
+		}
+
+		public void ToastError (string message)
+		{
+			var toast = Mvx.Resolve<IToastMessage>();
+			if (toast != null)
+				toast.ToastError (message);
+		}
+
+
+		public void ToastProgress (string message)
+		{
+			var toast = Mvx.Resolve<IToastMessage>();
+			if (toast != null)
+				toast.ToastProgress (message);
+		}
+
+		public void ToastStatus (string message)
+		{
+			var toast = Mvx.Resolve<IToastMessage>();
+			if (toast != null)
+				toast.ToastStatus (message);
+		}
+
+		public void ToastClose()
+		{
+			var toast = Mvx.Resolve<IToastMessage>();
+			if (toast != null)
+				toast.ToastClose ();
 		}
 	}
 }

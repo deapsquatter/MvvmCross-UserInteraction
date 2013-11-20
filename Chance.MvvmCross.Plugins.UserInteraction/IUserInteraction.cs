@@ -16,6 +16,13 @@ namespace Chance.MvvmCross.Plugins.UserInteraction
 		Task AlertAsync(string message, string title = "");
 		Task<bool> ConfirmAsync(string message, string title = "", string okButton = "OK", string cancelButton = "Cancel");
 		Task<InputResponse> InputAsync(string message, string placeholder = null, string title = null, string okButton = "OK", string cancelButton = "Cancel");
+	
+		void Toast (string message);
+		void ToastOK (string message);
+		void ToastError (string message);
+		void ToastProgress (string message);
+		void ToastStatus (string message);
+		void ToastClose();
 	}
 }
 
